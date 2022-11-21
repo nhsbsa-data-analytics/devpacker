@@ -1,6 +1,9 @@
 CMD
+codecov
 config
+covr
 env
+getenv
 gha
 github
 https
@@ -13,5 +16,6 @@ RENV
 reticulate
 Rscript
 rspm
+Sys
 testthat
 ubuntu

@@ -1,10 +1,10 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [master]
+    branches: [main, master]
   pull_request:
-    branches: [master]
+    branches: [main, master]
 
 name: test-coverage
 
@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RENV_PATHS_ROOT: ~/.local/share/renv
 
     steps:
       - uses: actions/checkout@v3
@@ -24,23 +23,28 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages:  |
-            reticulate
-            covr
-
-      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
-        with:
-          global: true
-          token: '${{ secrets.GITHUB_TOKEN }}'
-
-      - name: Install precommit framework
-        run: precommit::install_precommit()
-        shell: Rscript {0}
-
-      - name: Use precommit framework
-        run: precommit::use_precommit()
-        shell: Rscript {0}
+          extra-packages: any::covr
+          needs: coverage
 
       - name: Test coverage
-        run: covr::codecov()
+        run: |
+          covr::codecov(
+            quiet = FALSE,
+            clean = FALSE,
+            install_path = file.path(Sys.getenv("RUNNER_TEMP"), "package")
+          )
         shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: |
+          ## --------------------------------------------------------------------
+          find ${{ runner.temp }}/package -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-test-failures
+          path: ${{ runner.temp }}/package
