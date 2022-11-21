@@ -26,22 +26,12 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            reticulate
-            rcmdcheck
+          extra-packages: rcmdcheck
 
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           global: true
           token: '${{ secrets.GITHUB_TOKEN }}'
-
-      - name: Install precommit framework
-        run: precommit::install_precommit()
-        shell: Rscript {0}
-
-      - name: Use precommit framework
-        run: precommit::use_precommit()
-        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
 
