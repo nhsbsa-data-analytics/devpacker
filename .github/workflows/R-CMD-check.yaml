@@ -26,7 +26,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: [rcmdcheck, reticulate]
+          extra-packages: |
+            reticulate
+            rcmdcheck
 
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
