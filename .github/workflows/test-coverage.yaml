@@ -24,7 +24,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: covr
+          extra-packages: [covr, reticulate]
 
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
