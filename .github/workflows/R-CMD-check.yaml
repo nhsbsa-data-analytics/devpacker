@@ -39,6 +39,10 @@ jobs:
         run: precommit::install_precommit()
         shell: Rscript {0}
 
+      - name: Install precommit framework
+        run: precommit::use_precommit()
+        shell: Rscript {0}
+
       - uses: r-lib/actions/check-r-package@v1
 
       - name: Show testthat output
