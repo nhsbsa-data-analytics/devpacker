@@ -1,6 +1,6 @@
 Package: devpacker
 Title: Initialise A Blank R Package Or Shiny Dashboard With Good Practice Configuration
-Version: 0.0.0.9006
+Version: 1.0.0
 Authors@R: 
     person("Mark", "McPherson", , "mark.mcpherson1@nhs.net", role = c("aut", "cre"))
 Description: Initialise a blank R package or Shiny dashboard with test directories,
@@ -26,4 +26,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2

@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_shiny.R
 \name{create_shiny}
 \alias{create_shiny}
-\title{Create a shiny dashboard}
+\title{Create a \code{{shiny}} dashboard, with optional software development best practices}
 \usage{
 create_shiny(
   path,
@@ -13,42 +13,54 @@ create_shiny(
   use_coverage = use_ci,
   use_lintr = TRUE,
   use_tests = TRUE,
-  ...,
-  open = FALSE
+  open = FALSE,
+  ...
 )
 }
 \arguments{
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
 created, provided that the parent path exists.}
 
-\item{use_git}{Initialise and make initial commits to a local git
-repository. By default is \code{TRUE}.}
+\item{use_git}{Boolean. Initialise and make initial commits to a local git
+repository. Default \code{TRUE}.}
 
-\item{use_github}{Create and push to a GitHub repository. By default takes
-value of \code{use_git}. If set to \code{TRUE}, \code{use_git} must also be \code{TRUE}.}
+\item{use_github}{Boolean. Create and push to a GitHub repository. By default
+takes value of \code{use_git}. If set to \code{TRUE}, \code{use_git} must also be \code{TRUE}.}
 
-\item{use_ci}{Set up a GitHub Action job to run R CMD CHECK. By default takes
-value of \code{use_github}. If set to \code{TRUE}, \code{use_github} must also be \code{TRUE}.}
+\item{use_ci}{Boolean. Set up a GitHub Action job to run R CMD CHECK. By
+default takes value of \code{use_github}. If set to \code{TRUE}, \code{use_github} must
+also be \code{TRUE}.}
 
-\item{use_precommit}{Set up \code{precommit} to run checks before any commit. By
-default takes value of \code{use_ci}. If set to \code{TRUE}, \code{use_git} must also
-be \code{TRUE}.}
+\item{use_precommit}{Boolean. Set up \code{precommit} to run checks before any
+commit. By default takes value of \code{use_ci}. If set to \code{TRUE}, \code{use_git} must
+also be \code{TRUE}.}
 
-\item{use_coverage}{Set up \code{covr} and, if using GitHub, a GitHub Action to run
-code coverage and use the Codecov service. By default takes value of \code{use_ci}.}
+\item{use_coverage}{Boolean. Set up \code{{covr}} and, if using GitHub, a GitHub
+Action to run code coverage and use the Codecov service. By default takes
+value of \code{use_ci}.}
 
-\item{use_lintr}{Set up lintr. By default is \code{TRUE}.}
+\item{use_lintr}{Boolean. Set up lintr. Default \code{TRUE}.}
 
-\item{use_tests}{Set up testthat. By default is \code{TRUE}.}
+\item{use_tests}{Boolean. Set up testthat. Default \code{TRUE}.}
 
-\item{...}{Additional arguments passed to \code{golem::create_golem()}}
+\item{open}{Boolean. Open the created project? Default \code{FALSE}.}
 
-\item{open}{Boolean. Open the created project?}
+\item{...}{
+  Arguments passed on to \code{\link[golem:create_golem]{golem::create_golem}}
+  \describe{
+    \item{\code{check_name}}{Should we check that the package name is
+correct according to CRAN requirements.}
+    \item{\code{without_comments}}{Boolean. Start project without golem comments}
+    \item{\code{project_hook}}{A function executed as a hook after project
+creation. Can be used to change the default \code{{golem}} structure.
+to override the files and content. This function is executed just
+after the project is created.}
+  }}
 }
 \value{
-The path to the created package, invisibly.
+Path to the newly created \code{{shiny}} package, invisibly.
 }
 \description{
-Creates a new shiny dashboard as a  package at given path; the
+Creates a new \code{{shiny}} dashboard as a  package at given path; the
 package is named as the last folder in the path.
 }

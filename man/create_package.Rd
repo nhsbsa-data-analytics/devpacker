@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_package.R
 \name{create_package}
 \alias{create_package}
-\title{Create a package}
+\title{Create a package, with optional software development best practices}
 \usage{
 create_package(
   path,
@@ -13,45 +13,62 @@ create_package(
   use_coverage = use_ci,
   use_lintr = TRUE,
   use_tests = TRUE,
-  ...,
-  open = FALSE
+  open = FALSE,
+  ...
 )
 }
 \arguments{
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
 created, provided that the parent path exists.}
 
-\item{use_git}{Initialise and make initial commits to a local git
+\item{use_git}{Boolean. Initialise and make initial commits to a local git
 repository. By default is \code{TRUE}.}
 
-\item{use_github}{Create and push to a GitHub repository. By default takes
-value of \code{use_git}. If set to \code{TRUE}, \code{use_git} must also be \code{TRUE}.}
+\item{use_github}{Boolean. Create and push to a GitHub repository. By default
+takes value of \code{use_git}. If set to \code{TRUE}, \code{use_git} must also be \code{TRUE}.}
 
-\item{use_ci}{Set up a GitHub Action job to run R CMD CHECK. By default takes
-value of \code{use_github}. If set to \code{TRUE}, \code{use_github} must also be \code{TRUE}.}
+\item{use_ci}{Boolean. Set up a GitHub Action job to run R CMD CHECK. By
+default takes value of \code{use_github}. If set to \code{TRUE}, \code{use_github} must
+also be \code{TRUE}.}
 
-\item{use_precommit}{Set up \code{precommit} to run checks before any commit. By
-default takes value of \code{use_ci}. If set to \code{TRUE}, \code{use_git} must also
-be \code{TRUE}.}
+\item{use_precommit}{Boolean. Set up \code{precommit} to run checks before any
+commit. By default takes value of \code{use_ci}. If set to \code{TRUE}, \code{use_git} must
+also be \code{TRUE}.}
 
-\item{use_coverage}{Set up \code{covr} and, if using GitHub, a GitHub Action to run
-code coverage and use the Codecov service. By default takes value of \code{use_ci}.}
+\item{use_coverage}{Boolean. Set up \code{{covr}} and, if using GitHub, a GitHub
+Action to run code coverage and use the Codecov service. By default takes
+value of \code{use_ci}.}
 
-\item{use_lintr}{Set up lintr. By default is \code{TRUE}.}
+\item{use_lintr}{Boolean. Set up lintr. Default \code{TRUE}.}
 
-\item{use_tests}{Set up testthat. By default is \code{TRUE}.}
+\item{use_tests}{Boolean. Set up testthat. Default \code{TRUE}.}
 
-\item{...}{Additional arguments passed to \code{usethis::create_package()}}
-
-\item{open}{If \code{TRUE}, \link[usethis:proj_activate]{activates} the new project:
+\item{open}{Boolean. Default \code{FALSE}.If \code{TRUE}, \link[=proj_activate]{activates} the new project:
 \itemize{
 \item If RStudio desktop, the package is opened in a new session.
 \item If on RStudio server, the current RStudio project is activated.
 \item Otherwise, the working directory and active project is changed.
 }}
+
+\item{...}{
+  Arguments passed on to \code{\link[usethis:create_package]{usethis::create_package}}
+  \describe{
+    \item{\code{fields}}{A named list of fields to add to \code{DESCRIPTION}, potentially
+overriding default values. See \code{\link[usethis:use_description]{use_description()}} for how you can set
+personalized defaults using package options.}
+    \item{\code{rstudio}}{If \code{TRUE}, calls \code{\link[usethis:use_rstudio]{use_rstudio()}} to make the new package or
+project into an \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{RStudio Project}.
+If \code{FALSE} and a non-package project, a sentinel \code{.here} file is placed so
+that the directory can be recognized as a project by the
+\href{https://here.r-lib.org}{here} or
+\href{https://rprojroot.r-lib.org}{rprojroot} packages.}
+    \item{\code{roxygen}}{Do you plan to use roxygen2 to document your package?}
+    \item{\code{check_name}}{Whether to check if the name is valid for CRAN and throw an
+error if not.}
+  }}
 }
 \value{
-The path to the created package, invisibly.
+Path to the newly created package, invisibly.
 }
 \description{
 Creates a new package at given path; the package is named as the
