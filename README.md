@@ -17,7 +17,7 @@ _Initialise A Blank R Package Or {shiny} App With Good Practice Configuration_
 You can install `devpacker` from this repository with:
 
 ``` r
-devtools::install.git_hub("MarkMc1089/devpacker")
+devtools::install_github("MarkMc1089/devpacker")
 ```
 
 ## Usage
