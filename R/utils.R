@@ -63,6 +63,18 @@ create_package_ <- function(path, open, creation_fun, ...) {
 }
 
 
+create_shiny_ <- function(path, open, project_hook, ...) {
+  if (package_exists(path)) {
+    usethis::ui_stop("This package already exists. Create a copy and/or delete it first.")
+  }
+  create_success <- NULL
+  create_success <- golem::create_golem(path, open = open, project_hook = project_hook, ...)
+  if (is.null(create_success)) {
+    usethis::ui_stop("Unable to create package - aborting")
+  }
+}
+
+
 init_lintr <- function() {
   file.copy(system.file("config", "lintr", package = "devpacker"), ".")
   file.rename("lintr", ".lintr")
@@ -166,7 +178,7 @@ init_gh <- function(repo_name) {
   remref <- paste0("origin/", default_branch) # Exclude Linting
   usethis::ui_done(
     "\n    Pushing {usethis::ui_value(default_branch)} branch to GitHub and setting
-      \n    {usethis::ui_value(remref)} as upstream branch"
+     \n    {usethis::ui_value(remref)} as upstream branch"
   )
   gert::git_push(remote = "origin", verbose = TRUE)
 

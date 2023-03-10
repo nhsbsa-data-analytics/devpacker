@@ -14,6 +14,7 @@ create_shiny(
   use_lintr = TRUE,
   use_tests = TRUE,
   open = FALSE,
+  project_hook = NULL,
   ...
 )
 }
@@ -45,17 +46,12 @@ value of \code{use_ci}.}
 
 \item{open}{Boolean. Open the created project? Default \code{FALSE}.}
 
-\item{...}{
-  Arguments passed on to \code{\link[golem:create_golem]{golem::create_golem}}
-  \describe{
-    \item{\code{check_name}}{Should we check that the package name is
-correct according to CRAN requirements.}
-    \item{\code{without_comments}}{Boolean. Start project without golem comments}
-    \item{\code{project_hook}}{A function executed as a hook after project
+\item{project_hook}{A function executed as a hook after project
 creation. Can be used to change the default \code{{golem}} structure.
 to override the files and content. This function is executed just
 after the project is created.}
-  }}
+
+\item{...}{Arguments passed to project_hook.}
 }
 \value{
 Path to the newly created \code{{shiny}} package, invisibly.
