@@ -12,6 +12,7 @@ https
 initialise
 Initialise
 Lifecycle
+lintr
 lorenzwalthert
 oleksiyrudenko
 os
@@ -24,6 +25,7 @@ RENV
 repo
 reticulate
 roxygen
+rprojroot
 Rscript
 rspm
 RStudio
