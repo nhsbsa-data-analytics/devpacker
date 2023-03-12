@@ -51,12 +51,17 @@ package_exists <- function(path) {
 }
 
 
-create_package_ <- function(path, open, creation_fun, ...) {
+create_package_ <- function(path, open, ...) {
   if (package_exists(path)) {
-    usethis::ui_stop("This package already exists. Create a copy and/or delete it first.")
+    usethis::ui_stop(
+      "This package already exists. Create a copy and/or delete it first."
+    )
   }
   create_success <- NULL
-  create_success <- creation_fun(path, ..., open = open)
+  create_success <- usethis::create_package(
+    path,
+    open = open, check_name = TRUE, ...
+  )
   if (is.null(create_success)) {
     usethis::ui_stop("Unable to create package - aborting")
   }
@@ -65,10 +70,15 @@ create_package_ <- function(path, open, creation_fun, ...) {
 
 create_shiny_ <- function(path, open, project_hook, ...) {
   if (package_exists(path)) {
-    usethis::ui_stop("This package already exists. Create a copy and/or delete it first.")
+    usethis::ui_stop(
+      "This package already exists. Create a copy and/or delete it first."
+    )
   }
   create_success <- NULL
-  create_success <- golem::create_golem(path, open = open, project_hook = project_hook, ...)
+  create_success <- golem::create_golem(
+    path,
+    open = open, project_hook = project_hook, check_name = TRUE, ...
+  )
   if (is.null(create_success)) {
     usethis::ui_stop("Unable to create package - aborting")
   }

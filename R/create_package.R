@@ -26,7 +26,7 @@
 #'   * If RStudio desktop, the package is opened in a new session.
 #'   * If on RStudio server, the current RStudio project is activated.
 #'   * Otherwise, the working directory and active project is changed.
-#' @inheritDotParams usethis::create_package -path -open
+#' @inheritDotParams usethis::create_package
 #'
 #' @return Path to the newly created package, invisibly.
 #'
@@ -39,7 +39,7 @@ create_package <- function(path, use_git = TRUE, use_github = use_git,
     return(invisible(FALSE))
   }
 
-  create_package_(path, open, usethis::create_package, ...)
+  create_package_(path, open, ...)
 
   post_creation_steps(
     path, use_git, use_github, use_ci, use_precommit, use_coverage, use_lintr, use_tests
