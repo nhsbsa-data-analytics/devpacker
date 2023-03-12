@@ -15,6 +15,7 @@ Imports:
     git2r (>= 0.29.0),
     glue (>= 1.6.2),
     golem (>= 0.3.1),
+    mi.r.utils,
     precommit (>= 0.2.2),
     rlang (>= 1.0.1),
     rprojroot (>= 2.0.3),
@@ -22,6 +23,8 @@ Imports:
 Suggests: 
     covr (>= 3.5.1),
     testthat (>= 3.0.0)
+Remotes:
+    MarkMc1089/mi.r.utils
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true

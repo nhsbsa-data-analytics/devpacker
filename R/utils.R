@@ -75,9 +75,12 @@ create_shiny_ <- function(path, open, project_hook, ...) {
     )
   }
   create_success <- NULL
-  create_success <- golem::create_golem(
-    path,
-    open = open, project_hook = project_hook, check_name = FALSE, ...
+  create_success <- mi.r.utils::suppress_errors(
+    golem::create_golem(
+      path,
+      open = open, project_hook = project_hook, check_name = FALSE, ...
+    ),
+    "No root directory found in"
   )
   if (is.null(create_success)) {
     usethis::ui_stop("Unable to create package - aborting")
