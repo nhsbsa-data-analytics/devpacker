@@ -60,7 +60,7 @@ create_package_ <- function(path, open, ...) {
   create_success <- NULL
   create_success <- usethis::create_package(
     path,
-    open = open, check_name = TRUE, ...
+    open = open, check_name = FALSE, ...
   )
   if (is.null(create_success)) {
     usethis::ui_stop("Unable to create package - aborting")
@@ -77,7 +77,7 @@ create_shiny_ <- function(path, open, project_hook, ...) {
   create_success <- NULL
   create_success <- golem::create_golem(
     path,
-    open = open, project_hook = project_hook, check_name = TRUE, ...
+    open = open, project_hook = project_hook, check_name = FALSE, ...
   )
   if (is.null(create_success)) {
     usethis::ui_stop("Unable to create package - aborting")
