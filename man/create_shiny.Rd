@@ -6,13 +6,14 @@
 \usage{
 create_shiny(
   path,
+  only_git = FALSE,
   use_git = TRUE,
-  use_github = use_git,
+  use_github = !only_git,
   use_ci = use_github,
   use_precommit = use_ci,
   use_coverage = use_ci,
-  use_lintr = TRUE,
-  use_tests = TRUE,
+  use_lintr = !only_git,
+  use_tests = !only_git,
   open = FALSE,
   project_hook = NULL,
   ...
@@ -22,6 +23,9 @@ create_shiny(
 \item{path}{A path. If it exists, it is used. If it does not exist, it is
 created, provided that the parent path exists.}
 
+\item{only_git}{Boolean. When \code{TRUE}, sets all flags except \code{use_git} to \code{FALSE}.
+Default \code{FALSE}.}
+
 \item{use_git}{Boolean. Initialise and make initial commits to a local git
 repository. Default \code{TRUE}.}
 
@@ -29,7 +33,7 @@ repository. Default \code{TRUE}.}
 takes value of \code{use_git}. If set to \code{TRUE}, \code{use_git} must also be \code{TRUE}.}
 
 \item{use_ci}{Boolean. Set up a GitHub Action job to run R CMD CHECK. By
-default takes value of \code{use_github}. If set to \code{TRUE}, \code{use_github} must
+default takes value of \code{!only_git}. If set to \code{TRUE}, \code{use_github} must
 also be \code{TRUE}.}
 
 \item{use_precommit}{Boolean. Set up \code{precommit} to run checks before any
@@ -40,9 +44,9 @@ also be \code{TRUE}.}
 Action to run code coverage and use the Codecov service. By default takes
 value of \code{use_ci}.}
 
-\item{use_lintr}{Boolean. Set up lintr. Default \code{TRUE}.}
+\item{use_lintr}{Boolean. Set up lintr. Default \code{!only_git}.}
 
-\item{use_tests}{Boolean. Set up testthat. Default \code{TRUE}.}
+\item{use_tests}{Boolean. Set up testthat. Default \code{!only_git}.}
 
 \item{open}{Boolean. Open the created project? Default \code{FALSE}.}
 
