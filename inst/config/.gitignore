@@ -1,0 +1,41 @@
+# By default, ignore all files with these extensions
+# These may contain sensitive data, so we will want to explicitly allow such files
+# to be added to the repo
+*.xls
+*.xlsx
+*.xlsb
+*.xlsm
+*.csv
+*.ppt
+*.pptx
+*.pdf
+*.txt
+*.doc
+*.docx
+*.msg
+*.httr-oauth
+*.zip
+*.7z
+*.html
+*.rds
+*.json
+*.log
+*.RData
+*.Rhistory
+*.Rapp.history
+*.lnk
+.Rproj.user
+
+# To not ignore a specific file of the above types, prepend the path with !
+# NOTE: use unix style slashes, "/", not Windows style, "\"
+# NOTE: PDFs, Word documents and Outlook messages are ignored, so if you want to
+# include them, add them explicitly here, e.g.
+# !/www/CSAT_syrvey.pdf
+
+# Ignore whole folders in the top-level dir, e.g.
+# folder-not-included
+
+
+# Ignore any folder (and its subfolders, if any) using the ** wildcard
+**/rsconnect
+**/.secret
