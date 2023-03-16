@@ -8,8 +8,7 @@ _Initialise A Blank R Package Or {shiny} App With Good Practice Configuration_
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![R-CMD-check](https://github.com/MarkMc1089/devpacker/workflows/R-CMD-check/badge.svg)](https://github.com/MarkMc1089/devpacker/actions)
-[![Codecov test coverage](https://codecov.io/gh/MarkMc1089/devpacker/branch/master/graph/badge.svg)](https://codecov.io/gh/MarkMc1089/devpacker?branch=master)
+[![R-CMD-check](https://github.com/nhsbsa-data-analytics/devpacker/workflows/R-CMD-check/badge.svg)](https://github.com/nhsbsa-data-analytics/devpacker/actions)
 <!-- badges: end -->
 
 ## Installation
@@ -17,7 +16,7 @@ _Initialise A Blank R Package Or {shiny} App With Good Practice Configuration_
 You can install `devpacker` from this repository with:
 
 ``` r
-devtools::install_github("MarkMc1089/devpacker")
+devtools::install_github("nhsbsa-data-analytics/devpacker")
 ```
 
 ## Usage
