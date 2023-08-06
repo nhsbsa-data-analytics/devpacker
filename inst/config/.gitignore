@@ -26,15 +26,15 @@
 *.lnk
 .Rproj.user
 
+# Ignore whole folders in the top-level dir, e.g.
+# folder-not-included
+data/**/*
+
 # To not ignore a specific file of the above types, prepend the path with !
 # NOTE: use unix style slashes, "/", not Windows style, "\"
 # NOTE: PDFs, Word documents and Outlook messages are ignored, so if you want to
 # include them, add them explicitly here, e.g.
-# !/www/CSAT_syrvey.pdf
-
-# Ignore whole folders in the top-level dir, e.g.
-# folder-not-included
-
+# !/www/CSAT_survey.pdf
 
 # Ignore any folder (and its subfolders, if any) using the ** wildcard
 **/rsconnect
