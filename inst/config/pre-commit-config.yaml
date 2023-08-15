@@ -16,12 +16,10 @@ repos:
         additional_dependencies:
         -    gert
         -    gh
-        -    glue
         -    precommit
         -    usethis
         -    utils
         -    withr
-        -    git2r
         -    here
         -    fs
     -   id: use-tidy-description

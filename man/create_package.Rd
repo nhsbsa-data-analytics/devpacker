@@ -58,7 +58,7 @@ the new project:
 overriding default values. See \code{\link[usethis:use_description]{use_description()}} for how you can set
 personalized defaults using package options.}
     \item{\code{rstudio}}{If \code{TRUE}, calls \code{\link[usethis:use_rstudio]{use_rstudio()}} to make the new package or
-project into an \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{RStudio Project}.
+project into an \href{https://r-pkgs.org/workflow101.html#sec-workflow101-rstudio-projects}{RStudio Project}.
 If \code{FALSE} and a non-package project, a sentinel \code{.here} file is placed so
 that the directory can be recognized as a project by the
 \href{https://here.r-lib.org}{here} or
